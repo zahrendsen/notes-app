@@ -6,9 +6,10 @@ const notes = require('./notes.js')
 yargs.version('1.1.0')
 
 // Create add command
+yargs.epilogue(chalk.yellowBright.inverse ('Before each command type: node app.js "command"'))
 yargs.command({
     command: 'add',
-    describe: 'Add a new note',
+    describe: chalk.green('Add a new note'),
     builder: {
         title: {
             describe: 'Note title',
@@ -29,7 +30,7 @@ yargs.command({
 // Create remove command
 yargs.command({
     command: 'remove',
-    describe: 'Remove a note',
+    describe: chalk.red('Remove a note'),
     builder: {
         title: {
             describe: 'Note title',
@@ -45,7 +46,7 @@ yargs.command({
 // Create list command
 yargs.command({
     command: 'list',
-    describe: 'List your notes',
+    describe: chalk.yellow('List your notes'),
     handler() {
         notes.listNotes()
     }
@@ -54,7 +55,7 @@ yargs.command({
 // Create read command
 yargs.command({
     command: 'read',
-    describe: 'Read a note',
+    describe: chalk.blue('Read a note'),
     builder: {
         title: {
             describe: 'Note title',
